@@ -27,6 +27,21 @@
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
+{{-- newly added --}}
+            <div>
+                <x-label for="address" value="{{ __('Address') }}" />
+                <x-input id="address" class="block w-full mt-1" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
+            </div>
+
+            <div>
+                <x-label for="phone" value="{{ __('Phone') }}" />
+                <x-input id="phone" class="block w-full mt-1" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+            </div>
+
+            <div>
+                <x-label for="dob" value="{{ __('Date of Birth') }}" />
+                <x-input id="dob" class="block w-full mt-1" type="date" name="dob" :value="old('dob')" required autofocus autocomplete="dob" />
+            </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />

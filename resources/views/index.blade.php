@@ -18,6 +18,7 @@
                     <li><a href="/about">ABOUT US</a></li>
                 </ul>
             </nav>
+            {{-- Login and Register button from jetstream --}}
             @if (Route::has('login'))
                             <nav class="flex justify-end flex-1 -mx-3">
                                 @auth
