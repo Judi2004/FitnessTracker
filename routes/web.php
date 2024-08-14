@@ -23,3 +23,5 @@ Route::get('/home', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+
