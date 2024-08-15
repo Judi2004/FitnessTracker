@@ -24,4 +24,14 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+Route::get('/main', function () {
+    return view('main');
+});
+
+Route::get('/elibrary', function () {
+    return view('elibrary');
+});
+
+
+
 

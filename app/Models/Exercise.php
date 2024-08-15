@@ -13,13 +13,11 @@ class Exercise extends Model
         'name',
         'image',
         'video',
-        'description',
-
+        'description'
     ];
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    
+
 }
