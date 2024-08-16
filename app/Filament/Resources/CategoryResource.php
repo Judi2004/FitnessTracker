@@ -44,7 +44,6 @@ class CategoryResource extends Resource
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

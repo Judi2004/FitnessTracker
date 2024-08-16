@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Panel;
 
 class User extends Authenticatable
 {
@@ -66,4 +67,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function canAccessPanel(Panel $panel): bool{ //to only allow admin to access the admin panel
+
+        if($panel->getId() === 'admin'){
+        return $this->email === 'admin123@gmail.com';
+    }
+    return true;
+}
 }

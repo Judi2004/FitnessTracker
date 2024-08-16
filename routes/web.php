@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('main');
 });
 
 Route::middleware([
@@ -24,8 +24,8 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/main', function () {
-    return view('main');
+Route::get('/index', function () {
+    return view('index');
 });
 
 Route::get('/elibrary', function () {
