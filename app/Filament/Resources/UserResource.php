@@ -38,26 +38,22 @@ class UserResource extends Resource
                     ->placeholder('Enter your password')
                     ->password()
                     ->autocomplete('new-password'),
-                // Forms\Components\TextInput::make('address')
-                //     ->label('Address')
-                //     ->required()
-                //     ->placeholder('Enter your address'),
-                // Forms\Components\TextInput::make('phone')
-                //     ->label('Phone')
-                //     ->required()
-                //     ->placeholder('Enter your phone number'),
-                // Forms\Components\DatePicker::make('dob')
-                //     ->label('Date of Birth')
-                //     ->required()
-                //     ->placeholder('Enter your date of birth'),
-                // Forms\Components\Select::make('usertype')
-                //     ->label('User Type')
-                //     ->required()
-                //     ->options([
-                //         'member' => 'Member',
-                //         'trainer' => 'Trainer',
-                //         'admin' => 'Admin',
-                //     ]),
+                Forms\Components\TextInput::make('address')
+                    ->label('Address')
+                    ->placeholder('Enter your address'),
+                Forms\Components\TextInput::make('phone')
+                    ->label('Phone')
+                    ->placeholder('Enter your phone number'),
+                Forms\Components\DatePicker::make('dob')
+                    ->label('Date of Birth')
+                    ->placeholder('Enter your date of birth'),
+                Forms\Components\Select::make('usertype')
+                    ->label('User Type')
+                    ->options([
+                        'member' => 'Member',
+                        'trainer' => 'Trainer',
+                        'admin' => 'Admin',
+                    ]),
 
 
             ]);

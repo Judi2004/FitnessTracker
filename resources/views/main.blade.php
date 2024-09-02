@@ -40,8 +40,18 @@
             href="{{ url('/dashboard') }}"
             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
         >
-            Dashboard
+            Welcome {{ Auth::user()->name }}
         </a>
+        <!-- Sign Out Button -->
+        <form method="POST" action="{{ route('logout') }}" x-data>
+            @csrf
+            <button
+                type="submit"
+                class="btn rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+            >
+                Sign Out
+            </button>
+        </form>
     @else
         <a
             href="{{ route('login') }}"

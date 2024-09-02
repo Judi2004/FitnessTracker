@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
+use App\Filament\Resources\WorkoutSplitResource\Pages;
+use App\Filament\Resources\WorkoutSplitResource\RelationManagers;
+use App\Models\WorkoutSplit;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class WorkoutSplitResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = WorkoutSplit::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,13 +23,9 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Name')
-                    ->required()
-                    ->maxLength(255)
-                    ->placeholder('Enter category name'),
-                   
-
+                Forms\Components\TextInput::make('routine_name')
+                    ->label('Routine Name')
+                    ->required(),
 
             ]);
     }
@@ -38,29 +34,21 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Name')
+                Tables\Columns\TextColumn::make('routine_name')
+                    ->label('Routine Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -79,9 +67,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListWorkoutSplits::route('/'),
+            'create' => Pages\CreateWorkoutSplit::route('/create'),
+            'edit' => Pages\EditWorkoutSplit::route('/{record}/edit'),
         ];
     }
 }

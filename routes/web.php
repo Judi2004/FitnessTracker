@@ -24,12 +24,13 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/index', function () {
-    return view('index');
-});
 
 Route::get('/elibrary', function () {
     return view('elibrary');
+});
+
+Route::get('/welcome', function () {
+    return view('welcome');
 });
 
 

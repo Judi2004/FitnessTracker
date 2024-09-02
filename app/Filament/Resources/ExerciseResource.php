@@ -35,7 +35,7 @@ class ExerciseResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('exercises'),//to store the image in the exercises directory
-                    Forms\Components\FileUpload::make('video')
+                Forms\Components\FileUpload::make('video')
                     // Remove the .video() call
                     ->directory('exercises')
                     ->acceptedFileTypes(['video/mp4', 'video/mov', 'video/avi']) // Optional: Restrict file types
