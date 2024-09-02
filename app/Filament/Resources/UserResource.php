@@ -20,6 +20,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -105,6 +107,10 @@ class UserResource extends Resource
             //
         ];
     }
+    public static function getGloballySearchableAttributes(): array
+{
+    return ['name', 'email'];
+}
 
     public static function getPages(): array
     {
