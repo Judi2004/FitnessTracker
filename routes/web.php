@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('main');
 });
 
 Route::middleware([
@@ -23,3 +23,16 @@ Route::get('/home', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+
+Route::get('/elibrary', function () {
+    return view('elibrary');
+});
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+
+
+

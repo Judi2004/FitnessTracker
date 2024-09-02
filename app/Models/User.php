@@ -9,8 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
@@ -65,5 +67,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function canAccessPanel(Panel $panel): bool{ //to only allow admin to access the admin panel
+
+        if($panel->getId() === 'admin'){
+        return $this->email === 'admin123@gmail.com';
+    }
+    return true;
+}
+public function workoutSplits()
+    {
+        return $this->belongsToMany(WorkoutSplit::class, 'user_workout_split');
     }
 }

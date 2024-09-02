@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<header>
+<div class="logo">FITNESS TRACKER</div>
+            <nav>
+                <ul>
+                    <li><a href="/home">HOME</a></li>
+                    <li><a href="/profile">MY PROFILE</a></li>
+                    <li><a href="/about">ABOUT US</a></li>
+                </ul>
+            </nav>
+</header>
+
 <div class="container">
     <h1>EXERCISE LIBRARY</h1>
 
@@ -29,9 +40,9 @@
     <div id="chest" class="exercise-container">
         <h2>CHEST</h2>
         <div class="exercise-grid">
-            <div><img src="path/to/bench-press.jpg" alt="Bench Press"><p>BENCH PRESS</p></div>
-            <div><img src="path/to/incline-press.jpg" alt="Incline Press"><p>INCLINE PRESS</p></div>
-            <div><img src="path/to/chest-fly.jpg" alt="Chest Fly"><p>CHEST FLY</p></div>
+            <div><img src="fitnessimages/benchpress.jpg" alt="Bench Press"><p>BENCH PRESS</p></div>
+            <div><img src="fitnessimages/incline.jpeg" alt="Incline Press"><p>INCLINE PRESS</p></div>
+            <div><img src="fitnessimages/chestfly.jpg" alt="Chest Fly"><p>CHEST FLY</p></div>
             <div><img src="path/to/decline-press.jpg" alt="Decline Press"><p>DECLINE PRESS</p></div>
             <div><img src="path/to/cable-fly.jpg" alt="Cable Fly"><p>CABLE FLY</p></div>
             <div><img src="path/to/dumbbell-pullover.jpg" alt="Dumbbell Pullover"><p>DUMBBELL PULLOVER</p></div>
@@ -43,6 +54,7 @@
 
     <!-- Repeat similar structure for BACK, ARMS, SHOULDERS, LOWER BODY, ABS -->
 </div>
+
 
 <script src="scripts.js"></script> <!-- Link to external JS file -->
 
