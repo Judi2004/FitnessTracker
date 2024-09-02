@@ -19,6 +19,10 @@ class ExerciseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
 
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Form $form): Form
     {
         return $form

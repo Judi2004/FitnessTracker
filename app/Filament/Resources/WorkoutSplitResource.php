@@ -19,6 +19,10 @@ class WorkoutSplitResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $recordTitleAttribute = 'routine_name';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -38,7 +42,7 @@ class WorkoutSplitResource extends Resource
                     ->label('Routine Name')
                     ->searchable()
                     ->sortable(),
-                
+
             ])
             ->filters([
                 //
