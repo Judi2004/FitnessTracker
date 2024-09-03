@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Library</title>
-    <link rel="stylesheet" href="mystyle.css"> <!-- Link to external CSS file -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitness Tracker</title>
+    {{-- my own css --}}
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
 
@@ -24,8 +26,8 @@
 
     <img src="fitnessimages/library.png" alt="Background Image" class="background-image">
 
-    <a href="index.php" class="logo-link">
-            <img src="fitnessimages/logofitness.png" alt="Fitness Tracker Logo" class="logo">
+    <a href="index.php">
+            <img src="fitnessimages/logofitness.png" alt="Fitness Tracker Logo" class="logoimg">
         </a>
 
     <div class="button-container">

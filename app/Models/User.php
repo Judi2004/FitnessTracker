@@ -71,12 +71,17 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool{ //to only allow admin to access the admin panel
 
         if($panel->getId() === 'admin'){
-        return $this->email === 'admin123@gmail.com';
+        return $this->email === 'admin123@gmail.com'|| $this->usertype === 'trainer';
     }
     return true;
 }
 public function workoutSplits()
     {
         return $this->belongsToMany(WorkoutSplit::class, 'user_workout_split');
+    }
+
+    public function scopeMembers($query)
+    {
+        return $query->where('usertype', 'member');
     }
 }
