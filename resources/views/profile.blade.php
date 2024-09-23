@@ -31,35 +31,19 @@
                     <img src="fitnessimages/cameraicon.jpg" alt="Camera Icon">
                 </div>
             </div>
-            <div class="profile-name">ARNORLD LORANCE</div>
+            <div class="profile-name">
+                <h2>{{ Auth::check()? Auth:: user()->name :'Guest'}}</h2>
+            </div>
             <div class="membership-info">
-                <h3>GOLD MEMBERSHIP</h3>
-                <p><strong>ADDRESS :</strong> No.6 SIRIMALWATTA ROAD, ANIWATTA, KANDY</p>
-                <p><strong>TELEPHONE :</strong> 071 338 12 34</p>
-                <p><strong>DOB :</strong> 2003/04/26</p>
+                <p><strong>E-MAIL :</strong> {{ Auth::check()? Auth:: user()->email :'xxxx@gmail.com'}}</p>
+                <p><strong>ADDRESS :</strong> {{ Auth::check()? Auth:: user()->address :'-'}}</p>
+                <p><strong>TELEPHONE :</strong> {{ Auth::check()? Auth:: user()->phone :'+94 000 000 000'}}</p>
+                <p><strong>DOB :</strong> {{ Auth::check()? Auth:: user()->dob :'xx/xx/xxxx'}}</p>
             </div>
         </div>
     </main>
     <footer>
-        <div class="footer-container">
-            <div class="footer-section about-us">
-                <h3>ABOUT US</h3>
-                <p>We're here to empower your fitness journey. Join our supportive community and track your progress every step of the way.</p>
-            </div>
-            <div class="footer-section logo">
-                <h3>FITNESS TRACKER</h3>
-                <div class="social-icons">
-                    <a href="#"><img src="fitnessimages/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="fitnessimages/in.jpg" alt="Instagram"></a>
-                    <a href="#"><img src="fitnessimages/twitter.png" alt="X (Twitter)"></a>
-                </div>
-            </div>
-            <div class="footer-section contact-us">
-                <h3>CONTACT US</h3>
-                <p><img src="fitnessimages/phone.png" alt="Phone"> +94 77 411 12 34</p>
-                <p><img src="fitnessimages/mail1.png" alt="Email"> lfc888@gmail.com</p>
-            </div>
-        </div>
+        @include('Components.footer')
     </footer>
 </body>
 </html>

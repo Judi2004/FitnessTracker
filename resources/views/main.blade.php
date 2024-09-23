@@ -6,7 +6,7 @@
     <title>Welcome</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
-<body>
+<body class="mbody">
 
     <!-- Background Image -->
     <img src="fitnessimages/fitnessmain.jpg" alt="Background Image" class="background-image">
@@ -40,7 +40,9 @@
             href="{{ url('/dashboard') }}"
             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
         >
+        <div class="authname">
             Welcome {{ Auth::user()->name }}
+        </div>
         </a>
         <!-- Sign Out Button -->
         <form method="POST" action="{{ route('logout') }}" x-data>
@@ -76,22 +78,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Image Slideshow -->
-    <div class="carousel">
-        <div class="carousel-item">
-            <img src="fitnessimages/f1.jpg" alt="Gym Equipment 1">
-        </div>
-        <div class="carousel-item">
-            <img src="fitnessimages/f2.jpg" alt="Gym Equipment 2">
-        </div>
-        <div class="carousel-item">
-            <img src="fitnessimages/fitnessmain.jpg" alt="Gym Equipment 3">
-        </div>
-        <a class="carousel-prev" onclick="prevSlide()">&#10094;</a>
-        <a class="carousel-next" onclick="nextSlide()">&#10095;</a>
-    </div>
-
 
     <script src="script.js"></script>
 </body>

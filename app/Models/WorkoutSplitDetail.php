@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WorkoutSplitDetail extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'workout_split_id',
         'exercise_id',
@@ -16,14 +17,16 @@ class WorkoutSplitDetail extends Model
         'sets',
         'rest',
         'notes',
-
     ];
+
     public function workoutSplit()
     {
         return $this->belongsTo(WorkoutSplit::class);
     }
+
     public function exercise()
     {
         return $this->belongsTo(Exercise::class);
     }
 }
+
