@@ -23,43 +23,41 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Name')
-                    ->required()
-                    ->placeholder('Enter your name'),
-                Forms\Components\TextInput::make('email')
-                    ->label('Email')
-                    ->required()
-                    ->placeholder('Enter your email address'),
-                Forms\Components\TextInput::make('password')
-                    ->label('Password')
-                    ->required()
-                    ->placeholder('Enter your password')
-                    ->password()
-                    ->autocomplete('new-password'),
-                Forms\Components\TextInput::make('address')
-                    ->label('Address')
-                    ->placeholder('Enter your address'),
-                Forms\Components\TextInput::make('phone')
-                    ->label('Phone')
-                    ->placeholder('Enter your phone number'),
-                Forms\Components\DatePicker::make('dob')
-                    ->label('Date of Birth')
-                    ->placeholder('Enter your date of birth'),
-                Forms\Components\Select::make('usertype')
-                    ->label('User Type')
-                    ->options([
-                        'member' => 'Member',
-                        'trainer' => 'Trainer',
-                        'admin' => 'Admin',
-                    ]),
+{
+    return $form
+        ->schema([
+            Forms\Components\TextInput::make('name')
+                ->label('Name')
+                ->required()
+                ->placeholder('Enter your name'),
+            Forms\Components\TextInput::make('email')
+                ->label('Email')
+                ->required()
+                ->placeholder('Enter your email address'),
+            Forms\Components\TextInput::make('password')
+                ->label('Password')
+                ->required(fn($livewire) => $livewire instanceof Pages\CreateUser) // Only required during creation
+                ->password()
+                ->visible(fn($livewire) => $livewire instanceof Pages\CreateUser), // Show only on creation
+            Forms\Components\TextInput::make('address')
+                ->label('Address')
+                ->placeholder('Enter your address'),
+            Forms\Components\TextInput::make('phone')
+                ->label('Phone')
+                ->placeholder('Enter your phone number'),
+            Forms\Components\DatePicker::make('dob')
+                ->label('Date of Birth')
+                ->placeholder('Enter your date of birth'),
+            Forms\Components\Select::make('usertype')
+                ->label('User Type')
+                ->options([
+                    'member' => 'Member',
+                    'trainer' => 'Trainer',
+                    'admin' => 'Admin',
+                ]),
+        ]);
+}
 
-
-            ]);
-    }
 
     public static function table(Table $table): Table
     {

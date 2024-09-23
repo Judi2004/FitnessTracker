@@ -8,11 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class WorkoutSplit extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'routine_name',
 
-    ];
-
+    protected $fillable = ['routine_name'];
 
     public function users()
     {
@@ -20,10 +17,9 @@ class WorkoutSplit extends Model
     }
 
     public function exercises()
-{
-    return $this->belongsToMany(Exercise::class, 'workout_split_details', 'workout_split_id', 'exercise_id')
-                ->withPivot('weight', 'reps', 'sets', 'rest', 'notes');
+    {
+        return $this->belongsToMany(Exercise::class, 'workout_split_details', 'workout_split_id', 'exercise_id')
+            ->withPivot('weight', 'reps', 'sets', 'rest', 'notes');
+    }
 }
 
-
-}

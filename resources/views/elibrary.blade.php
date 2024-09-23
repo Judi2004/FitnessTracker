@@ -3,62 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fitness Tracker</title>
-    {{-- my own css --}}
+    <title>Exercise Library</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mystyle.css">
 </head>
-<body>
+<body class="lbody">
 
-<header>
-<div class="logo">FITNESS TRACKER</div>
-            <nav>
-                <ul>
-                    <li><a href="/home">HOME</a></li>
-                    <li><a href="/profile">MY PROFILE</a></li>
-                    <li><a href="/about">ABOUT US</a></li>
-                </ul>
-            </nav>
-</header>
+    {{-- <img src="Logo.png" alt="Background Image" class="background-image"> --}}
 
-<div class="container">
-    <h1>EXERCISE LIBRARY</h1>
 
-    <img src="fitnessimages/library.png" alt="Background Image" class="background-image">
 
-    <a href="index.php">
-            <img src="fitnessimages/logofitness.png" alt="Fitness Tracker Logo" class="logoimg">
-        </a>
+    <header class="header">
+        @include('Components.navbar')
+    </header>
 
-    <div class="button-container">
-        <button onclick="showExercises('chest')">CHEST</button>
-        <button onclick="showExercises('back')">BACK</button>
-        <button onclick="showExercises('arms')">ARMS</button>
-        <button onclick="showExercises('shoulders')">SHOULDERS</button>
-        <button onclick="showExercises('lower_body')">LOWER BODY</button>
-        <button onclick="showExercises('abs')">ABS</button>
-    </div>
+    {{-- <img src="fitnessimages/fitnessmain.jpg" alt="Background Image" class="background-image"> --}}
+    <img src="fitnessimages/logofitness.png" alt="Fitness Tracker Logo" class="logoimg">
 
-    <div id="chest" class="exercise-container">
-        <h2>CHEST</h2>
-        <div class="exercise-grid">
-            <div><img src="fitnessimages/benchpress.jpg" alt="Bench Press"><p>BENCH PRESS</p></div>
-            <div><img src="fitnessimages/incline.jpeg" alt="Incline Press"><p>INCLINE PRESS</p></div>
-            <div><img src="fitnessimages/chestfly.jpg" alt="Chest Fly"><p>CHEST FLY</p></div>
-            <div><img src="path/to/decline-press.jpg" alt="Decline Press"><p>DECLINE PRESS</p></div>
-            <div><img src="path/to/cable-fly.jpg" alt="Cable Fly"><p>CABLE FLY</p></div>
-            <div><img src="path/to/dumbbell-pullover.jpg" alt="Dumbbell Pullover"><p>DUMBBELL PULLOVER</p></div>
-            <div><img src="path/to/cable-press.jpg" alt="Cable Press"><p>CABLE PRESS</p></div>
-            <div><img src="path/to/cable-crossover.jpg" alt="Cable Crossover"><p>CABLE CROSSOVER</p></div>
-            <div><img src="path/to/peck-deck-machine.jpg" alt="Peck Deck Machine"><p>PECK DECK MACHINE</p></div>
+        <!-- Header Section -->
+        <div class="my-5 text-center">
+            <h1 class="display-4">EXERCISE LIBRARY</h1>
         </div>
-    </div>
 
-    <!-- Repeat similar structure for BACK, ARMS, SHOULDERS, LOWER BODY, ABS -->
-</div>
+        <!-- Category Buttons -->
+=
+        <div class="mb-4 text-center">
+            @foreach($categories as $category)
+                <a href="#{{ strtolower($category->name) }}" class="p-2 m-2 btn btn-outline-light">{{ strtoupper($category->name) }}</a>
+            @endforeach
+        </div>
+
+{{-- Exercise cards --}}
+        <div class="container">
+            <!-- Loop through each category -->
+            <!-- Exercise cards -->
+            @foreach($categories as $category)
+            <section id="{{ strtolower($category->name) }}" class="mt-5">
+                <h3 class="text-center">{{ strtoupper($category->name) }}</h3>
+                <div class="row">
+                    @forelse($category->exercises as $exercise)
+                    @if($exercise->category->name == $category->name)
+                    <div class="mb-4 col-md-3">
+                     <!-- Pass the exercise ID in the URL -->
+                    <a href="{{ route('elibrarydetails', ['id' => $exercise->id]) }}">
+                        <div class="card2">
+                            <img src="{{ asset('storage/' . $exercise->image) }}" class="card-img-top" alt="{{ $exercise->name }}">
+                                <div class="text-center card-body">
+                                <h5 class="card-title2">{{ strtoupper($exercise->name) }}</h5>
+                            </div>
+                        </div></a>
+                    </div>
+                    @endif
+                @empty
+                <p class="text-center">No exercises available for {{ $category->name }}.</p>
+                @endforelse
+            </div>
+            </section>
+            @endforeach
+        </div>
 
 
-<script src="scripts.js"></script> <!-- Link to external JS file -->
 
+        <footer>
+            @include('Components.footer')
+        </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

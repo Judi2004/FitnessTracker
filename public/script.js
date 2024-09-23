@@ -23,13 +23,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*Library*/
 
-function showExercises(category) {
-    // Hide all exercise containers
-    var exerciseContainers = document.querySelectorAll('.exercise-container');
-    exerciseContainers.forEach(function(container) {
-        container.classList.remove('active');
-    });
-
-    // Show the selected category's container
-    document.getElementById(category).classList.add('active');
-}
